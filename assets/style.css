@@ -122,3 +122,13 @@ a:hover{opacity:.92}
 .content li{margin:6px 0}
 .content img{max-width:100%; height:auto; border-radius:14px}
 .footer{margin-top:22px; color:var(--muted); font-size:13px; text-align:center}
+
+
+/* Avatar photo */
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
