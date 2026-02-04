@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Publications · Elda Paja</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+  <div class="brand">
+    <div class="avatar" aria-hidden="true">EP</div>
+    <div style="min-width:0">
+      <h1>Elda Paja</h1>
+      <div class="sub">Associate Professor at the Computer Science Department at ITU since February 2021</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a class="pill" data-nav href="index.html">Home</a>
+<a class="pill" data-nav href="activities.html">Activities</a>
+<a class="pill" data-nav href="teaching.html">Teaching</a>
+<a class="pill" data-nav href="publications.html">Publications</a>
+<a class="pill" data-nav href="projects.html">Projects</a>
+<a class="pill" data-nav href="news.html">News</a>
+    <a class="pill" href="thesis.html">Thesis</a>
+  </nav>
+</header>
+    <div class="page">
+      <main class="card content">
+        <section class="primary">
+<article class="container main-container" role="main">
+
+
+
+<section class="primary-content">
+    <h1>List of Publications:</h1>
+
+    <section class="secsubhead">
+        <p>
+        Here is the list of publications, organized by type and displayed in reverse chronological order.
+        Additional material, dataset, source-code or details may be provided upon request via e-mail.
+        </p>
+        <p>
+           You may find more information on my <a href="http://scholar.google.com/citations?user=5TAtu2cAAAAJ">Google Scholar citations page</a>
+        </p>
+
+    </section>
+
+
+    {% if collections.books.length != 0  %}
+        <section class="content-section">
+        <h2>Books</h2>
+        {%- for pub in collections.books -%}
+        <article id="{{ pub.data.name }}">
+                <h3>
+                    {{ pub.data.title }}
+                    {% if pub.data.file != "#" %}
+                    <a class="attachment" href="{{site.url }}/{{ pub.data.file }}" title="Download a digital copy">(PDF)</a>
+                    {% endif %}
+                </h3>
+                <address class="authors">{{ pub.data.authors }}</address>
+                <small class="venue">{{ pub.data.venue }}</small>
+        </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+
+
+    {% if collections.journal.length != 0  %}
+        <section class="content-section">
+        <h2>International Journals</h2>
+        {%- for pub in collections.journal -%}
+        <article id="{{ pub.data.name }}">
+                <h3>
+                    {{ pub.data.title }}
+                    {% if pub.data.file != "#" %}
+                    <a class="attachment" href="{{site.url}}/{{pub.data.file}}" title="Download a digital copy">(PDF)</a>
+                    {% endif %}
+                </h3>
+                <address class="authors">{{ pub.data.authors }}</address>
+                <small class="venue">{{ pub.data.venue }}</small>
+        </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+
+
+
+
+    {% if collections.conference.length != 0  %}
+        <section class="content-section">
+        <h2>International Conferences</h2>
+        {%- for pub in collections.conference -%}
+        <article id="{{ pub.data.name }}">
+                <h3>
+                    {{ pub.data.title }}
+                    {% if pub.data.file != "#" %}
+                    <a class="attachment" href="{{site.url}}/{{pub.data.file}}" title="Download a digital copy">(PDF)</a>
+                    {% endif %}
+                </h3>
+                <address class="authors"> {{pub.data.authors}}</address>
+                <small class="venue">{{pub.data.venue}}</small>
+        </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+
+
+
+    {% if collections.workshop.length != 0  %}
+        <section class="content-section">
+        <h2>International Workshops</h2>
+        {%- for pub in collections.workshop -%}
+        <article id="{{ pub.data.name }}">
+                <h3>
+                    {{ pub.data.title }}
+                    {% if pub.data.file != "#" %}
+                    <a class="attachment" href="{{site.url}}/{{pub.data.file}}" title="Download a digital copy">(PDF)</a>
+                    {% endif %}
+                </h3>
+                <address class="authors"> {{pub.data.authors}}</address>
+                <small class="venue">{{pub.data.venue}}</small>
+        </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+
+
+    {% if collections.demo.length != 0  %}
+        <section class="content-section">
+        <h2>Posters &amp; Demonstrations</h2>
+        {%- for pub in collections.demo -%}
+        <article id="{{ pub.data.name }}">
+                <h3>
+                    {{ pub.data.title }}
+                    {% if pub.data.file != "#" %}
+                    <a class="attachment" href="{{site.url}}/{{pub.data.file}}" title="Download a digital copy">(PDF)</a>
+                    {% endif %}
+                </h3>
+                <address class="authors"> {{pub.data.authors}}</address>
+                <small class="venue">{{pub.data.venue}}</small>
+        </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+
+
+
+
+    {% if collections.chapters.length != 0  %}
+        <section class="content-section">
+        <h2>Book Chapters</h2>
+        {%- for pub in collections.chapters -%}
+        <article id="{{ pub.data.name }}">
+                <h3>
+                    {{ pub.data.title }}
+                    {% if pub.data.file != "#" %}
+                    <a class="attachment" href="{{site.url}}/{{pub.data.file}}" title="Download a digital copy">(PDF)</a>
+                    {% endif %}
+                </h3>
+                <address class="authors"> {{pub.data.authors}}</address>
+                <small class="venue">{{pub.data.venue}}</small>
+        </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+
+
+
+
+    {% if collections.reports.length != 0  %}
+        <section class="content-section">
+        <h2>Technical Reports</h2>
+        {%- for pub in collections.reports -%}
+        <article id="{{ pub.data.name }}">
+                <h3>
+                    {{ pub.data.title }}
+                    {% if pub.data.file != "#" %}
+                    <a class="attachment" href="{{site.url}}/{{pub.data.file}}" title="Download a digital copy">(PDF)</a>
+                    {% endif %}
+                </h3>
+                <address class="authors"> {{pub.data.authors}}</address>
+                <small class="venue">{{pub.data.venue}}</small>
+        </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+
+
+</section>
+</article>
+</section>
+      </main>
+      <aside class="card">
+  <p class="kicker">Quick links</p>
+  <div class="btnrow">
+    <a class="btn" href="http://scholar.google.com/citations?user=5TAtu2cAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a><a class="btn" href="publications.html">Publications</a><a class="btn" href="projects.html">Projects</a>
+  </div>
+  <div class="hr"></div>
+  <div class="list">
+    <div class="item">
+      <strong>GitHub Pages</strong>
+      <div class="muted small">This site is now static HTML — no Docker/build required.</div>
+    </div>
+    <div class="item">
+      <strong>Tip</strong>
+      <div class="muted small">Edit any page directly in GitHub and it will publish automatically.</div>
+    </div>
+  </div>
+</aside>
+    </div>
+    <footer class="footer">© <span id="year"></span> · Hosted on GitHub Pages</footer>
+  </div>
+  <script src="assets/site.js"></script>
+</body>
+</html>
