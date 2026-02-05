@@ -1,3 +1,6 @@
+/* ==============================
+   Base + Theme
+   ============================== */
 :root{
   --bg:#0b1020;
   --card:#111a33;
@@ -8,10 +11,15 @@
   --shadow:0 14px 40px rgba(0,0,0,.35);
   --radius:18px;
   --max:1020px;
+  --maxWide:1200px;
   --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-*{box-sizing:border-box}
+
+*{ box-sizing:border-box; }
+
+html, body { height: 100%; }
+
 body{
   margin:0;
   font-family:var(--sans);
@@ -22,12 +30,38 @@ body{
     var(--bg);
   line-height:1.65;
 }
-a{color:inherit}
-a:hover{opacity:.92}
-.wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 60px;}
+
+a{ color:inherit; text-decoration:none; }
+a:hover{ opacity:.92; }
+
+.muted{ color:var(--muted); }
+.small{ font-size:13px; }
+.mono{ font-family:var(--mono); }
+
+/* ==============================
+   Layout containers
+   ============================== */
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:26px 18px 60px;
+}
+
+.wrap.wide{
+  max-width:var(--maxWide);
+}
+
+/* ==============================
+   Header + Nav
+   ============================== */
 .header{
-  position:sticky; top:12px; z-index:10;
-  display:flex; gap:16px; align-items:center; justify-content:space-between;
+  position:sticky;
+  top:12px;
+  z-index:10;
+  display:flex;
+  gap:16px;
+  align-items:center;
+  justify-content:space-between;
   padding:16px 16px;
   border:1px solid var(--border);
   background:rgba(17,26,51,.74);
@@ -35,21 +69,59 @@ a:hover{opacity:.92}
   box-shadow:var(--shadow);
   backdrop-filter: blur(10px);
 }
-@media (max-width: 860px){
-  .header{position:static; flex-direction:column; align-items:flex-start}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
 }
-.brand{display:flex; align-items:center; gap:12px; min-width:0}
+
+.brand h1{
+  margin:0;
+  font-size:18px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.brand .sub{
+  margin:2px 0 0;
+  font-size:13px;
+  color:var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Avatar box (works for initials OR photo) */
 .avatar{
-  width:52px; height:52px; border-radius:14px;
+  width:52px;
+  height:52px;
+  border-radius:14px;
   border:1px solid var(--border);
+  overflow:hidden;              /* critical: prevents image overflow */
   background:linear-gradient(135deg, rgba(124,58,237,.75), rgba(59,130,246,.6));
-  display:grid; place-items:center;
+  display:grid;
+  place-items:center;
   font-weight:800;
   flex:0 0 auto;
 }
-.brand h1{margin:0; font-size:18px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.brand .sub{margin:2px 0 0; font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.nav{display:flex; flex-wrap:wrap; gap:10px}
+
+/* Avatar photo */
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
 .pill{
   padding:9px 12px;
   border-radius:999px;
@@ -57,30 +129,18 @@ a:hover{opacity:.92}
   background:rgba(255,255,255,.03);
   font-size:13px;
   color:var(--muted);
-  text-decoration:none;
 }
-.pill.active, .pill:hover{
+
+.pill.active,
+.pill:hover{
   color:var(--text);
   border-color:rgba(124,58,237,.40);
   background:rgba(124,58,237,.12);
 }
 
-/* Default layout: content + sidebar */
-.page {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 14px;
-  align-items: start;
-}
-
-/* Wide pages (like News): no sidebar */
-.wrap.wide .page {
-  grid-template-columns: 1fr;
-}
-
-@media (max-width: 980px){
-  .page{grid-template-columns:1fr}
-}
+/* ==============================
+   Cards + page layout
+   ============================== */
 .card{
   padding:18px;
   border-radius:var(--radius);
@@ -89,64 +149,113 @@ a:hover{opacity:.92}
   box-shadow:var(--shadow);
   backdrop-filter: blur(10px);
 }
-.kicker{margin:0 0 8px; font-size:13px; color:var(--muted)}
-.btnrow{display:flex; flex-wrap:wrap; gap:10px}
-.btn{
-  display:inline-flex; gap:8px; align-items:center;
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.03);
-  font-size:14px;
-  text-decoration:none;
+
+.kicker{
+  margin:0 0 8px;
+  font-size:13px;
+  color:var(--muted);
 }
-.btn.primary{
-  border-color:rgba(124,58,237,.45);
-  background:rgba(124,58,237,.15);
+
+.hr{
+  height:1px;
+  background:var(--border);
+  margin:12px 0;
 }
-.muted{color:var(--muted)}
-.small{font-size:13px}
-.hr{height:1px; background:var(--border); margin:12px 0}
-.list{display:grid; gap:10px}
+
+/* Default: main + sidebar */
+.page{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:14px;
+  align-items:start;
+}
+
+/* Full-width pages: add class "wide" to wrap */
+.wrap.wide .page{
+  grid-template-columns: 1fr;
+}
+
+/* If a page has no <aside>, ensure main spans */
+.page > main{
+  min-width:0;
+}
+
+/* Sidebar should not stretch weirdly */
+.page > aside{
+  align-self:start;
+}
+
+/* ==============================
+   Content formatting
+   ============================== */
+.content p{ margin:0 0 10px; }
+.content ul{ margin:8px 0 0 18px; }
+.content li{ margin:6px 0; }
+.content h2{ margin:0 0 10px; font-size:18px; }
+.content h3{ margin:14px 0 8px; font-size:16px; }
+.content section + section{ margin-top:14px; }
+
+/* List blocks used by sidebar + items */
+.list{
+  display:grid;
+  gap:10px;
+}
+
 .item{
   padding:12px;
   border-radius:14px;
   border:1px solid var(--border);
   background:rgba(255,255,255,.02);
 }
-.item strong{display:block; margin-bottom:4px}
-.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
-.tag{
-  font-size:12px;
-  padding:4px 8px;
-  border-radius:999px;
+
+.item strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* Buttons/links row */
+.btnrow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.btn{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:12px;
   border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  font-size:14px;
+}
+
+.btn.primary{
+  border-color:rgba(124,58,237,.45);
+  background:rgba(124,58,237,.15);
+}
+
+/* Footer */
+.footer{
+  margin-top:22px;
   color:var(--muted);
-  text-decoration:none;
-}
-.content h1,.content h2,.content h3{margin:0 0 10px}
-.content p{margin:0 0 10px}
-.content ul{margin:8px 0 0 18px}
-.content li{margin:6px 0}
-.content img{max-width:100%; height:auto; border-radius:14px}
-.footer{margin-top:22px; color:var(--muted); font-size:13px; text-align:center}
-
-
-.avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  overflow: hidden;          /* 🔴 CRITICAL */
-  background: #111;
-  flex: 0 0 auto;
+  font-size:13px;
+  text-align:center;
 }
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+/* ==============================
+   Responsive
+   ============================== */
+@media (max-width: 860px){
+  .header{
+    position:static;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .page{
+    grid-template-columns: 1fr; /* stack main + sidebar on mobile */
+  }
 }
-
-
