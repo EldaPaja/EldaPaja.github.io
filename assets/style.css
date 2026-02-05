@@ -140,3 +140,11 @@ a:hover{opacity:.92}
   object-fit: cover;
   display: block;
 }
+
+/* Full-width layout when there is no sidebar */
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
