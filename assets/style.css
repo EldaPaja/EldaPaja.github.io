@@ -141,10 +141,7 @@ a:hover{opacity:.92}
   display: block;
 }
 
-/* Full-width layout when there is no sidebar */
-.page {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+/* Wider layout for pages like News */
+.wrap.wide {
+  max-width: 1200px;
 }
-
