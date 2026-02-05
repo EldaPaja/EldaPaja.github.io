@@ -64,12 +64,20 @@ a:hover{opacity:.92}
   border-color:rgba(124,58,237,.40);
   background:rgba(124,58,237,.12);
 }
-.page{
-  margin-top:14px;
-  display:grid;
+
+/* Default layout: content + sidebar */
+.page {
+  display: grid;
   grid-template-columns: 1fr 320px;
-  gap:14px;
+  gap: 14px;
+  align-items: start;
 }
+
+/* Wide pages (like News): no sidebar */
+.wrap.wide .page {
+  grid-template-columns: 1fr;
+}
+
 @media (max-width: 980px){
   .page{grid-template-columns:1fr}
 }
@@ -141,7 +149,4 @@ a:hover{opacity:.92}
   display: block;
 }
 
-/* Wider layout for pages like News */
-.wrap.wide {
-  max-width: 1200px;
-}
+
