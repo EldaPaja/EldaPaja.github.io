@@ -174,21 +174,20 @@ a:hover{
 
 /* Nav pills */
 .pill{
-  padding:8px 11px;
-  border-radius:999px;
-
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.03);
-
-  font-size:13px;
-  color:var(--muted);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .pill:hover,
 .pill.active{
-  color:var(--text);
-  border-color:rgba(124,58,237,.40);
-  background:rgba(124,58,237,.12);
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 /* ==============================
